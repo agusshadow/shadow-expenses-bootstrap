@@ -23,7 +23,7 @@ export default function Navbar() {
         <NavbarBootstrap.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {user && (
-              <Nav.Link as={NavLink} to="/gastos">
+              <Nav.Link as={NavLink} to="/expenses">
                 Gastos
               </Nav.Link>
             )}

@@ -1,21 +1,26 @@
 import { Button, Table } from "react-bootstrap";
 import { useExpenses } from "./useExpenses";
 import Loader from "../common/Loader";
+import { useNavigate } from "react-router-dom";
 
 export default function Expenses() {
   const { expenses, loading } = useExpenses();
+  const navigate = useNavigate();
 
-  if (loading) <Loader />;
+  if (loading) return <Loader />;
 
   return (
     <>
       <h2 className="mb-4">Gastos</h2>
-      <Button variant="success" className="mb-4">
-        Crear
-      </Button>
-      <Table striped bordered hover variant="dark" responsive>
+      <div className="text-end mb-4">
+        <Button variant="success" onClick={() => navigate("create")}>
+          Crear
+        </Button>
+      </div>
+      <Table striped bordered hover variant="light" responsive>
         <thead>
           <tr>
+            <th>ID</th>
             <th>Nombre</th>
             <th>Monto</th>
           </tr>
@@ -23,6 +28,7 @@ export default function Expenses() {
         <tbody>
           {expenses.map(({ id, name, amount }) => (
             <tr key={id}>
+              <td>{id}</td>
               <td>{name}</td>
               <td>${amount}</td>
             </tr>

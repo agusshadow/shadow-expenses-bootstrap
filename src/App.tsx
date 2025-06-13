@@ -8,6 +8,7 @@ import Login from "./auth/login/Login";
 import { UserProvider } from "./contexts/UserContext";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import Register from "./auth/register/Register";
+import Create from "./expenses/Create";
 
 function App() {
   return (
@@ -20,13 +21,21 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route
-              path="/gastos"
+              path="/expenses"
               element={
                 <ProtectedRoute>
                   <Expenses />
                 </ProtectedRoute>
               }
-            />
+            ></Route>
+            <Route
+              path="/expenses/create"
+              element={
+                <ProtectedRoute>
+                  <Create />
+                </ProtectedRoute>
+              }
+            ></Route>
           </Routes>
         </Container>
       </UserProvider>
