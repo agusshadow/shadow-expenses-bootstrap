@@ -1,12 +1,12 @@
 import { Button, Table } from "react-bootstrap";
-
-const expensesData = [
-  { id: 1, nombre: "Alquiler", monto: 500 },
-  { id: 2, nombre: "Supermercado", monto: 150 },
-  { id: 3, nombre: "Transporte", monto: 60 },
-];
+import { useExpenses } from "./useExpenses";
+import Loader from "../common/Loader";
 
 export default function Expenses() {
+  const { expenses, loading } = useExpenses();
+
+  if (loading) <Loader />;
+
   return (
     <>
       <h2 className="mb-4">Gastos</h2>
@@ -21,10 +21,10 @@ export default function Expenses() {
           </tr>
         </thead>
         <tbody>
-          {expensesData.map(({ id, nombre, monto }) => (
+          {expenses.map(({ id, name, amount }) => (
             <tr key={id}>
-              <td>{nombre}</td>
-              <td>${monto}</td>
+              <td>{name}</td>
+              <td>${amount}</td>
             </tr>
           ))}
         </tbody>
