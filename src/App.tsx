@@ -9,6 +9,7 @@ import { UserProvider } from "./contexts/UserContext";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import Register from "./auth/register/Register";
 import Create from "./expenses/Create";
+import Expense from "./expenses/Expense";
 
 function App() {
   return (
@@ -33,6 +34,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Create />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/expenses/:id"
+              element={
+                <ProtectedRoute>
+                  <Expense />
                 </ProtectedRoute>
               }
             ></Route>
