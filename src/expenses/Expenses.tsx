@@ -17,13 +17,21 @@ export default function Expenses() {
           Crear
         </Button>
       </div>
-      <Table striped bordered hover variant="light" responsive>
-        <thead>
+      <Table
+        striped
+        bordered
+        hover
+        variant="light"
+        responsive
+        size="md"
+        className="align-middle"
+      >
+        <thead className="table-success">
           <tr>
             <th>ID</th>
             <th>Nombre</th>
             <th>Monto</th>
-            <th>Fecha de creación</th> {/* Nueva columna */}
+            <th>Fecha de creación</th>
           </tr>
         </thead>
         <tbody>
@@ -31,7 +39,10 @@ export default function Expenses() {
             <tr key={id}>
               <td>{id}</td>
               <td>
-                <Link to={`/expenses/${id}`} className="text-decoration-none">
+                <Link
+                  to={`/expenses/${id}`}
+                  className="text-decoration-none text-success fw-semibold"
+                >
                   {name}
                 </Link>
               </td>
