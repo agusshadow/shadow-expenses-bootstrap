@@ -1,7 +1,18 @@
 import { Navbar as NavbarBootstrap, Nav, Container } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useUser } from "../contexts/UserContext";
+import { supabaseClient } from "../supabase/client";
 
 export default function Navbar() {
+  const { user } = useUser();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await supabaseClient.auth.signOut();
+    // Opcional: redirigir a login después de logout
+    navigate("/login");
+  };
+
   return (
     <NavbarBootstrap bg="dark" variant="dark" expand="lg">
       <Container>
@@ -10,12 +21,30 @@ export default function Navbar() {
         </NavbarBootstrap.Brand>
         <NavbarBootstrap.Toggle aria-controls="basic-navbar-nav" />
         <NavbarBootstrap.Collapse id="basic-navbar-nav">
-          <Nav>
-            <Nav.Link as={NavLink} to="/gastos">
-              Gastos
-            </Nav.Link>
+          <Nav className="me-auto">
+            {user && (
+              <Nav.Link as={NavLink} to="/gastos">
+                Gastos
+              </Nav.Link>
+            )}
           </Nav>
-          <p className="mb-0 ms-auto text-white">Nombre del Usuario</p>
+
+          <Nav className="ms-auto align-items-center">
+            {user ? (
+              <>
+                <p className="mb-0 me-3 text-white">
+                  {user.user_metadata?.username || "Usuario"}
+                </p>
+                <Nav.Link onClick={handleLogout} style={{ cursor: "pointer" }}>
+                  Cerrar sesión
+                </Nav.Link>
+              </>
+            ) : (
+              <Nav.Link as={NavLink} to="/login">
+                Iniciar sesión
+              </Nav.Link>
+            )}
+          </Nav>
         </NavbarBootstrap.Collapse>
       </Container>
     </NavbarBootstrap>
