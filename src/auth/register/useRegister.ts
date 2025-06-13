@@ -47,7 +47,7 @@ export function useRegister() {
         return null;
       }
 
-      navigate("/gastos");
+      navigate("/expenses");
       setLoading(false);
       return signInData;
     } catch (e) {

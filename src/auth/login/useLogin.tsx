@@ -23,7 +23,7 @@ export function useLogin() {
       return null;
     }
 
-    navigate("/gastos");
+    navigate("/expenses");
 
     return data;
   };
