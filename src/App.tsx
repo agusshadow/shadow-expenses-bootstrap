@@ -10,6 +10,7 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 import Register from "./auth/register/Register";
 import Create from "./expenses/Create";
 import Expense from "./expenses/Expense";
+import User from "./user/User";
 
 function App() {
   return (
@@ -42,6 +43,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Expense />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <User />
                 </ProtectedRoute>
               }
             ></Route>

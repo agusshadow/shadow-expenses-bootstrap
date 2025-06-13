@@ -32,9 +32,13 @@ export default function Navbar() {
           <Nav className="ms-auto align-items-center">
             {user ? (
               <>
-                <p className="mb-0 me-3 text-white">
+                <Nav.Link
+                  as={NavLink}
+                  to="/profile"
+                  className="mb-0 me-3 text-white"
+                >
                   {user.user_metadata?.username || "Usuario"}
-                </p>
+                </Nav.Link>
                 <Nav.Link onClick={handleLogout} style={{ cursor: "pointer" }}>
                   Cerrar sesión
                 </Nav.Link>
