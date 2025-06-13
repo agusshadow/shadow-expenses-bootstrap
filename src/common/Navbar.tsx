@@ -1,7 +1,13 @@
-import { Navbar as NavbarBootstrap, Nav, Container } from "react-bootstrap";
+import {
+  Navbar as NavbarBootstrap,
+  Nav,
+  Container,
+  Button,
+} from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useUser } from "../contexts/UserContext";
 import { supabaseClient } from "../supabase/client";
+import { PersonCircle } from "react-bootstrap-icons";
 
 export default function Navbar() {
   const { user } = useUser();
@@ -9,48 +15,68 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     await supabaseClient.auth.signOut();
-    // Opcional: redirigir a login después de logout
     navigate("/login");
   };
 
   return (
-    <NavbarBootstrap bg="dark" variant="dark" expand="lg">
-      <Container>
-        <NavbarBootstrap.Brand as={NavLink} to="/">
-          Shadow expenses
-        </NavbarBootstrap.Brand>
-        <NavbarBootstrap.Toggle aria-controls="basic-navbar-nav" />
-        <NavbarBootstrap.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            {user && (
-              <Nav.Link as={NavLink} to="/expenses">
-                Gastos
-              </Nav.Link>
-            )}
-          </Nav>
+    <>
+      <NavbarBootstrap bg="success" className="text-white" expand="lg">
+        <Container>
+          <NavbarBootstrap.Brand
+            as={NavLink}
+            to="/"
+            className="fw-bold text-white"
+          >
+            Shadow expenses
+          </NavbarBootstrap.Brand>
+          <NavbarBootstrap.Toggle aria-controls="main-navbar" />
+          <NavbarBootstrap.Collapse id="main-navbar">
+            <Nav className="ms-auto align-items-center gap-2">
+              {user ? (
+                <>
+                  <Button
+                    as={NavLink}
+                    to="/profile"
+                    variant="outline-light"
+                    size="sm"
+                    className="d-flex align-items-center gap-2"
+                  >
+                    <PersonCircle size={18} />
+                    {user.user_metadata?.username || "Usuario"}
+                  </Button>
 
-          <Nav className="ms-auto align-items-center">
-            {user ? (
-              <>
-                <Nav.Link
-                  as={NavLink}
-                  to="/profile"
-                  className="mb-0 me-3 text-white"
-                >
-                  {user.user_metadata?.username || "Usuario"}
-                </Nav.Link>
-                <Nav.Link onClick={handleLogout} style={{ cursor: "pointer" }}>
-                  Cerrar sesión
-                </Nav.Link>
-              </>
-            ) : (
-              <Nav.Link as={NavLink} to="/login">
-                Iniciar sesión
-              </Nav.Link>
-            )}
-          </Nav>
-        </NavbarBootstrap.Collapse>
-      </Container>
-    </NavbarBootstrap>
+                  <Button variant="danger" size="sm" onClick={handleLogout}>
+                    Cerrar sesión
+                  </Button>
+                </>
+              ) : (
+                <Button as={NavLink} to="/login" variant="light" size="sm">
+                  Iniciar sesión
+                </Button>
+              )}
+            </Nav>
+          </NavbarBootstrap.Collapse>
+        </Container>
+      </NavbarBootstrap>
+
+      {user && (
+        <NavbarBootstrap bg="light" variant="light">
+          <Container>
+            <Nav className="me-auto">
+              <NavLink
+                to="/expenses"
+                className={({ isActive }) =>
+                  isActive
+                    ? "nav-link text-success fw-bold"
+                    : "nav-link text-dark"
+                }
+              >
+                Gastos
+              </NavLink>
+            </Nav>
+          </Container>
+        </NavbarBootstrap>
+      )}
+    </>
   );
 }
