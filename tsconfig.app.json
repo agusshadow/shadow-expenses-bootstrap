@@ -24,7 +24,8 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": "./src",
     "paths": {
-      "@supabase-client/*": ["supabase/*"]
+      "@supabase-client/*": ["supabase/*"],
+      "@common/*": ["common/*"]
     }
   },
   "include": ["src"]

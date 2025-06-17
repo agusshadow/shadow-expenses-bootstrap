@@ -1,6 +1,5 @@
 import { Container } from "react-bootstrap";
 import "./App.css";
-import Navbar from "./common/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./home/Home";
 import Login from "./auth/login/Login";
@@ -12,6 +11,7 @@ import User from "./user/User";
 import Transaction from "./transactions/view/Transaction";
 import Transactions from "./transactions/Transactions";
 import Delete from "./transactions/delete/Delete";
+import Navbar from "@common/Navbar";
 
 function App() {
   return (

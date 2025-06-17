@@ -1,8 +1,8 @@
 import { Button, Table } from "react-bootstrap";
 import { useTransactions } from "./useTransactions";
-import Loader from "../common/Loader";
 import { Link, useNavigate } from "react-router-dom";
 import { formatDate } from "../utils/formatDate";
+import Loader from "@common/Loader";
 
 export default function Transactions() {
   const { transactions, loading } = useTransactions();

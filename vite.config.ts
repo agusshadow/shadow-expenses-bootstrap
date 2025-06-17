@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@supabase-client": path.resolve(__dirname, "src/supabase"),
+      "@common": path.resolve(__dirname, "src/common"),
     },
   },
 });

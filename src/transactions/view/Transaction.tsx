@@ -1,8 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import { useTransaction } from "./useTransaction";
 import { Card, Container, Row, Col, Button } from "react-bootstrap";
-import Loader from "../../common/Loader";
 import { formatDate } from "../../utils/formatDate";
+import Loader from "@common/Loader";
 
 export default function Transaction() {
   const { id } = useParams<{ id: string }>();
