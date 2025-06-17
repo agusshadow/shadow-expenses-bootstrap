@@ -41,7 +41,7 @@ export default function Transactions() {
               <td>
                 <Link
                   to={`/transactions/${id}`}
-                  className="text-decoration-none text-success fw-semibold"
+                  className="text-decoration-none fw-semibold"
                 >
                   {name}
                 </Link>
