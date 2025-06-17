@@ -1,30 +1,30 @@
 import { useState, useEffect } from "react";
 import { supabaseClient } from "../supabase/client";
-export function useExpenses() {
-  const [expenses, setExpenses] = useState([]);
+export function useTransactions() {
+  const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchExpenses() {
+    async function fetchTransactions() {
       setLoading(true);
       setError(null);
       const { data, error } = await supabaseClient
-        .from("expenses")
+        .from("transactions")
         .select("*")
         .order("id", { ascending: true });
 
       if (error) {
         setError(error.message);
-        setExpenses([]);
+        setTransactions([]);
       } else {
-        setExpenses(data);
+        setTransactions(data);
       }
       setLoading(false);
     }
 
-    fetchExpenses();
+    fetchTransactions();
   }, []);
 
-  return { expenses, loading, error };
+  return { transactions, loading, error };
 }

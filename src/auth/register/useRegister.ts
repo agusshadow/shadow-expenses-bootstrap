@@ -47,7 +47,7 @@ export function useRegister() {
         return null;
       }
 
-      navigate("/expenses");
+      navigate("/transactions");
       setLoading(false);
       return signInData;
     } catch (e) {

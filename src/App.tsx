@@ -3,14 +3,14 @@ import "./App.css";
 import Navbar from "./common/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./home/Home";
-import Expenses from "./expenses/Expenses";
 import Login from "./auth/login/Login";
 import { UserProvider } from "./contexts/UserContext";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import Register from "./auth/register/Register";
-import Create from "./expenses/Create";
-import Expense from "./expenses/Expense";
+import Create from "./transactions/create/Create";
 import User from "./user/User";
+import Transaction from "./transactions/view/Transaction";
+import Transactions from "./transactions/Transactions";
 
 function App() {
   return (
@@ -23,15 +23,15 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route
-              path="/expenses"
+              path="/transactions"
               element={
                 <ProtectedRoute>
-                  <Expenses />
+                  <Transactions />
                 </ProtectedRoute>
               }
             ></Route>
             <Route
-              path="/expenses/create"
+              path="/transactions/create"
               element={
                 <ProtectedRoute>
                   <Create />
@@ -39,10 +39,10 @@ function App() {
               }
             ></Route>
             <Route
-              path="/expenses/:id"
+              path="/transactions/:id"
               element={
                 <ProtectedRoute>
-                  <Expense />
+                  <Transaction />
                 </ProtectedRoute>
               }
             ></Route>

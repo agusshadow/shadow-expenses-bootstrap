@@ -64,14 +64,14 @@ export default function Navbar() {
           <Container>
             <Nav className="me-auto">
               <NavLink
-                to="/expenses"
+                to="/transactions"
                 className={({ isActive }) =>
                   isActive
                     ? "nav-link text-success fw-bold"
                     : "nav-link text-dark"
                 }
               >
-                Gastos
+                Transacciones
               </NavLink>
             </Nav>
           </Container>

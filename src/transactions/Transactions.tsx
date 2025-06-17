@@ -1,24 +1,24 @@
 import { Button, Table } from "react-bootstrap";
-import { useExpenses } from "./useExpenses";
+import { useTransactions } from "./useTransactions";
 import Loader from "../common/Loader";
 import { Link, useNavigate } from "react-router-dom";
+import { formatDate } from "../utils/formatDate";
 
-export default function Expenses() {
-  const { expenses, loading } = useExpenses();
+export default function Transactions() {
+  const { transactions, loading } = useTransactions();
   const navigate = useNavigate();
 
   if (loading) return <Loader />;
 
   return (
     <>
-      <h2 className="mb-4">Gastos</h2>
+      <h2 className="mb-4">Transacciones</h2>
       <div className="text-end mb-4">
         <Button variant="success" onClick={() => navigate("create")}>
           Crear
         </Button>
       </div>
       <Table
-        striped
         bordered
         hover
         variant="light"
@@ -31,30 +31,32 @@ export default function Expenses() {
             <th>ID</th>
             <th>Nombre</th>
             <th>Monto</th>
-            <th>Fecha de creación</th>
+            <th>Fecha</th>
           </tr>
         </thead>
         <tbody>
-          {expenses.map(({ id, name, amount, created_at }) => (
+          {transactions.map(({ id, name, amount, type, date }) => (
             <tr key={id}>
               <td>{id}</td>
               <td>
                 <Link
-                  to={`/expenses/${id}`}
+                  to={`/transactions/${id}`}
                   className="text-decoration-none text-success fw-semibold"
                 >
                   {name}
                 </Link>
               </td>
-              <td>${amount}</td>
+              <td
+                className={
+                  type === "income"
+                    ? "text-success fw-semibold"
+                    : "text-danger fw-semibold"
+                }
+              >
+                {type === "income" ? "+" : "-"}${amount.toFixed(2)}
+              </td>
               <td>
-                {new Date(created_at).toLocaleDateString(undefined, {
-                  year: "numeric",
-                  month: "short",
-                  day: "numeric",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
+                <td>{formatDate(date)}</td>
               </td>
             </tr>
           ))}

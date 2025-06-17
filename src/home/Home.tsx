@@ -30,9 +30,9 @@ export default function Home() {
           <Button
             variant="success"
             className="mt-4 px-4 py-2"
-            onClick={() => navigate("/expenses")}
+            onClick={() => navigate("/transactions")}
           >
-            Ver mis gastos
+            Ver mis Transacciones
           </Button>
         </Col>
       </Row>
@@ -88,7 +88,7 @@ export default function Home() {
           variant="success"
           size="lg"
           className="px-5 py-2"
-          onClick={() => navigate("/expenses")}
+          onClick={() => navigate("/transactions")}
         >
           Comenzar ahora
         </Button>
