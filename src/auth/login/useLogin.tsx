@@ -1,5 +1,5 @@
+import { supabaseClient } from "@supabase-client/client";
 import { useState } from "react";
-import { supabaseClient } from "../../supabase/client";
 import { useNavigate } from "react-router-dom";
 
 export function useLogin() {

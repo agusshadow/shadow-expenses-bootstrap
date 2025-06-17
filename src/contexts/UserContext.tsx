@@ -5,8 +5,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { supabaseClient } from "../supabase/client";
 import type { User } from "@supabase/supabase-js";
+import { supabaseClient } from "@supabase-client/client";
 
 // Tipado del contexto
 interface UserContextType {

@@ -6,8 +6,8 @@ import {
 } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useUser } from "../contexts/UserContext";
-import { supabaseClient } from "../supabase/client";
 import { PersonCircle } from "react-bootstrap-icons";
+import { supabaseClient } from "@supabase-client/client";
 
 export default function Navbar() {
   const { user } = useUser();

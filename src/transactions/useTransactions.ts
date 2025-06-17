@@ -1,5 +1,5 @@
+import { supabaseClient } from "@supabase-client/client";
 import { useState, useEffect } from "react";
-import { supabaseClient } from "../supabase/client";
 export function useTransactions() {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
