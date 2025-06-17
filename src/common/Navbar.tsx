@@ -27,7 +27,7 @@ export default function Navbar() {
             to="/"
             className="fw-bold text-white"
           >
-            Shadow expenses
+            Shadow transactions
           </NavbarBootstrap.Brand>
           <NavbarBootstrap.Toggle aria-controls="main-navbar" />
           <NavbarBootstrap.Collapse id="main-navbar">
