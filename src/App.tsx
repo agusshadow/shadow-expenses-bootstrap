@@ -11,6 +11,7 @@ import Create from "./transactions/create/Create";
 import User from "./user/User";
 import Transaction from "./transactions/view/Transaction";
 import Transactions from "./transactions/Transactions";
+import Delete from "./transactions/delete/Delete";
 
 function App() {
   return (
@@ -43,6 +44,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Transaction />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/transactions/:id/delete"
+              element={
+                <ProtectedRoute>
+                  <Delete />
                 </ProtectedRoute>
               }
             ></Route>

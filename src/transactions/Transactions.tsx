@@ -32,6 +32,7 @@ export default function Transactions() {
             <th>Nombre</th>
             <th>Monto</th>
             <th>Fecha</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -55,8 +56,22 @@ export default function Transactions() {
               >
                 {type === "income" ? "+" : "-"}${amount.toFixed(2)}
               </td>
-              <td>
-                <td>{formatDate(date)}</td>
+              <td>{formatDate(date)}</td>
+              <td className="d-flex gap-2">
+                <Button
+                  variant="outline-primary"
+                  size="sm"
+                  onClick={() => navigate(`/transactions/${id}/edit`)}
+                >
+                  Editar
+                </Button>
+                <Button
+                  variant="outline-danger"
+                  size="sm"
+                  onClick={() => navigate(`/transactions/${id}/delete`)}
+                >
+                  Eliminar
+                </Button>
               </td>
             </tr>
           ))}
