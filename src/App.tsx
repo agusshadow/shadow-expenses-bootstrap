@@ -13,6 +13,7 @@ import Transaction from "./transactions/view/Transaction";
 import Transactions from "./transactions/Transactions";
 import Delete from "./transactions/delete/Delete";
 import Navbar from "@common/Navbar";
+import NotFound from "@common/NotFound";
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
                 </ProtectedRoute>
               }
             ></Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Container>
       </UserProvider>
