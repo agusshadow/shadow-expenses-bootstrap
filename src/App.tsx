@@ -8,6 +8,7 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 import Register from "./auth/register/Register";
 import Create from "./transactions/create/Create";
 import User from "./user/User";
+import ChangePassword from "./user/changePassword/ChangePassword";
 import Transaction from "./transactions/view/Transaction";
 import Transactions from "./transactions/Transactions";
 import Delete from "./transactions/delete/Delete";
@@ -60,6 +61,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <User />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/profile/change-password"
+              element={
+                <ProtectedRoute>
+                  <ChangePassword />
                 </ProtectedRoute>
               }
             ></Route>

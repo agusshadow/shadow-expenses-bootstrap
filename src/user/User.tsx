@@ -1,5 +1,6 @@
 import { useUser } from "../contexts/UserContext";
 import { Card, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function User() {
   const { user } = useUser();
@@ -23,6 +24,16 @@ export default function User() {
                 Email:
               </Col>
               <Col md={9}>{user.email || "No disponible"}</Col>
+            </Row>
+            <Row className="mt-3">
+              <Col md={3} className="fw-semibold">
+                <Link
+                  to="/profile/change-password"
+                  className="text-decoration-none"
+                >
+                  Cambiar Contraseña
+                </Link>
+              </Col>
             </Row>
           </Card.Body>
         </Card>
